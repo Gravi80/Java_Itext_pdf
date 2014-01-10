@@ -1,0 +1,165 @@
+Table Width
+-----------
+You can set the table width using the setWidthPercentage() method.
+This sets the width of the table as a percentage of the width of the page.
+The default width is 80%. Here is a code example:
+
+table.setWidthPercentage(100);
+
+
+
+
+
+Spacing Before and After Table
+------------------------------
+You can set the spacing before and after the table like this:
+
+table.setSpacingBefore(10f);
+table.setSpacingAfter(10f);
+
+
+
+
+Column Widths
+-------------
+You can set the column widths using the setWidths() method, like this:
+
+float[] columnWidths = {2f, 1f, 1f};
+table.setWidths(columnWidths);
+
+The column widths in the float array are relative widths.
+In the example above the first column is twice the width of each of the following columns.
+You can use any numbers in the width array, and they will be interpreted as relative values.
+For instance, you could have written 100, 50, 50 if you needed a finer grained control over the column sizes.
+
+
+
+
+Column Span
+------------
+If you need a cell to span multiple columns you can do so using the setColspan() method, like this:
+
+cell.setColspan(2);
+
+
+
+
+
+Cell Text Mode and Composite Mode
+----------------------------------
+Cells can be added in either text mode or composite mode.
+In text mode the settings of the added element (Phrase, Paragraph etc.) is ignored.
+Only the settings of the cell is applied.
+In composite mode the settings of the added element is respected. Settings like leading (line spacing), margins etc. is thus respected.
+Content added to the PdfCell's constructor is considered text mode content.
+
+Content added via the PdfCell.addElement() method is considered composite mode content.
+Here are some examples:
+
+PdfCell textModeCell = new PdfCell(new Paragraph("Text Mode"));
+PdfCell compositeModeCell = new PdfCell();
+compositeModeCell.addElement(new Paragraph("Composite Mode"));
+
+table.addCell(new Paragraph("Text Mode"));
+
+
+
+
+
+Default Cell Settings in Text Mode
+-----------------------------------
+You can set the default cell settings of new cells added, using the table.addCell() methods, like this:
+
+PdfCell defaultCell = table.getDefaultCell();
+defaultCell.setBorder(PdfCell.NO_BORDER);
+//set more default settings.
+
+//add cells with default settings:
+table.addCell(new Paragraph("default text mode cell");
+table.addCell(new Phrase("default text mode cell");
+
+
+
+
+Cell Alignment
+---------------
+You can set the cell alignment using the setHorizontalAlignment() and setVerticalAlignment(), like this:
+cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+cell.setVerticalAlignment(Element.ALIGN_TOP);
+cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+cell.setVerticalAlignment(Element.ALIGN_BOTTOM);
+In composite mode you can also set the alignment of each Paragraph individually,
+by setting the paragraph alignment on the Paragraph object.
+
+
+
+
+Cell Indentation
+------------------
+You can set the indentation of cell content.
+The method setIndent() sets the indentation of the first paragraph in the cell.
+The method setFollowingIndent() sets the indentation of the following paragraphs in the cell.
+The method setRightIndent() sets the right indentation of the cell content.
+
+
+
+Cell Leading
+--------------
+You can set the leading (line spacing) of elements in a cell.
+If the cell is in composite mode, just set the leading on the element added,
+e.g. set the leading of a Paragraph before adding it to the cell.
+In text mode you can set a leading value that is used on the entire cell content.
+To so do, use the setLeading() method. This method takes two parameters.
+A fixed leading and a leading calculated on font height. Here are two examples:
+
+cell.setLeading(15f, 0f);
+cell.setLeading(0f, 1.5f);
+
+The first method call sets the leading to 15 points + 0 x font height.
+The second method call sets the leading to 0 points + 1.5 x font height.
+
+
+
+
+Cell Padding
+--------------
+You can set the padding of a cell (distance between cell edge and content) using these methods:
+cell.setPadding(5);
+
+cell.setPaddingLeft(8);
+cell.setPaddingRight(8);
+cell.setPaddingTop(8);
+cell.setPaddingBottom(8);
+
+Cell Borders and Colors
+------------------------
+You can set the cell border and color using these methods:
+cell.setBackgroundColor(BaseColor.YELLOW);   //sets BG color to yellow.
+
+cell.setBorder(Rectangle.NO_BORDER);   // removes border
+
+cell.setBorderWidth      (3f);         // sets border width to 3 units
+cell.setBorderWidthLeft  (1f);
+cell.setBorderWidthRight (1f);
+cell.setBorderWidthTop   (1f);
+cell.setBorderWidthBottom(1f);
+
+cell.setBorderColor      (BaseColor.BLUE);  // sets blue border
+cell.setBorderColorLeft  (BaseColor.GREEN);
+cell.setBorderColorRight (BaseColor.GREEN);
+cell.setBorderColorTop   (BaseColor.GREEN);
+cell.setBorderColorBottom(BaseColor.GREEN);
+
+To avoid having the cell border and the content overlap,
+if you are having thick cell borders, call the setUserBorderPadding(true), like this:
+
+cell.setUserBorderPadding(true);
+
+Cell Rotation
+--------------
+You can set the rotation of the cell content using the setRotation() method, like this:
+cell.setRotation(90);
+
+

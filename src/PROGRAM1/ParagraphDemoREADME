@@ -1,0 +1,37 @@
+Line Spacing
+-------------
+ Paragraph objects knows how to add line spacing if the added text exceeds the right edge of the document.
+ Line spacing is measured in user units.
+ There are 72 units per inch.
+ The default spacing is 1.5 times the font height.
+ You can change the line spacing by passing spacing as a parameter to the Paragraph constructor, like this:
+
+
+ Paragraph paragraph = new Paragraph(50);
+
+
+
+
+Spacing Before and After Paragraph
+------------------------------------
+
+paragraph.setSpacingAfter(50);
+paragraph.setSpacingBefore(50);
+
+
+Alignment
+----------
+
+paragraph.setAlignment(Element.ALIGN_LEFT);
+paragraph.setAlignment(Element.ALIGN_CENTER);
+paragraph.setAlignment(Element.ALIGN_RIGHT);
+
+
+Indentation
+------------
+
+ You can set the left and right indentation of the paragraph.
+ This moves the paragraph content further away from the edges of the page.
+
+ paragraph.setIndentationLeft(50);
+ paragraph.setIndentationRight(50);

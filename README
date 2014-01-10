@@ -1,0 +1,26 @@
+iText has a hierarchical structure.
+The smallest text unit is a "Chunk" which is a String with a pre-defined font.
+A "Phrase" combines several Chunks and allows to define line spacing.
+"Paragraph" is a subclass of "Phrase" and allows to define more layout attributes, e.g. margins.
+The class "Anchor" is a subclass of "Paragraph" and serves as the basis for hyperlinks in the generated PDF.
+
+
+	Document
+	Chunk
+	Phrase
+	Paragraph
+	Chapter + Section
+	Anchor
+	List
+	Tables
+	Images
+	Superscript + Subscript
+	Underline + Strikethrough
+	Fonts
+
+
+
+Chunk => represents the smallest possible "chunk" of text.
+------   A Chunk can contain as little as a single character, up to several sentences.
+
+
